@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation - Save Lives</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+        }
+        header {
+            background: rgba(220, 53, 69, 0.95);
+            padding: 25px;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .buttons button {
+            background: white;
+            color: #dc3545;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .buttons button:hover {
+            background: #dc3545;
+            color: white;
+            transform: scale(1.1);
+        }
+        .container {
+            width: 50%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            color: #333;
+        }
+        h2 {
+            color: #dc3545;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 1px solid gray;
+            font-size: 18px;
+        }
+        button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #a71d2a;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #dc3545;
+            font-weight: bold;
+        }
+        img {
+            width: 60%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>Donate Blood - Save Lives</header>
+    <div class="buttons">
+        <button onclick="document.getElementById('register-form').scrollIntoView({behavior: 'smooth'});">Donate Blood</button>
+        <button onclick="document.getElementById('search-form').scrollIntoView({behavior: 'smooth'});">Find Donors</button>
+    </div>
+    <div class="container">
+        <h2>Why Donate Blood?</h2>
+        <img src="https://images.hindustantimes.com/img/2022/06/22/550x309/blood-donation-gd071f3ded_1920_1655893247578_1655893271863.png">
+        <p>Blood donation is a selfless act that saves millions of lives every year. It helps in surgeries, emergencies, and treatments for diseases like cancer. Just one donation can save up to three lives!</p>
+        <img src="https://vims.ac.in/vims-hospital/wp-content/uploads/2023/01/Benefits-of-blood-donation.jpg" alt="WHO Blood Donation">
+        <p>Regular blood donation also benefits donors by improving cardiovascular health and reducing excess iron levels.</p>
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F4fiWZyVsTE?si=3xlAWovN8L4oQMXy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="container" id="register-form">
+        <h2>Register as a Donor</h2>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <select id="state" required>
+            <option value="">Select State</option>
+            <option value="Andhra Pradesh">Andhra pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Gujarat">gujarat</option>
+            <option value="Goa">Goa</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Tripura">tripura</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+        <select id="bloodGroup" required>
+
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+
+        </select>
+        <button onclick="registerDonor()">Register</button>
+    </div>
+    <div class="container" id="search-form">
+        <h2>Find a Blood Donor</h2>
+        <select id="searchBloodGroup" required>
+            <option value="">Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+        <select id="searchState" required>
+            <option value="">Select State</option>
+            <option value="Andhra Pradesh">Andhra pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Gujarat">gujarat</option>
+            <option value="Goa">Goa</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Tripura">tripura</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+        </select>
+        <button onclick="searchDonors()">Search</button>
+        <div class="result" id="searchResult"></div>
+    </div>
+    <script>
+        function registerDonor() {
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            let state = document.getElementById('state').value;
+            let bloodGroup = document.getElementById('bloodGroup').value;
+            if (name && phone && state && bloodGroup) {
+                let donors = JSON.parse(localStorage.getItem('donors')) || [];
+                donors.push({ name, phone, state, bloodGroup });
+                localStorage.setItem('donors', JSON.stringify(donors));
+                alert('Registration Successful!');
+            } else {
+                alert('Please fill all the fields.');
+            }
+        }
+        function searchDonors() {
+            let bloodGroup = document.getElementById('searchBloodGroup').value;
+            let state = document.getElementById('searchState').value;
+            let donors = JSON.parse(localStorage.getItem('donors')) || [];
+            let resultDiv = document.getElementById('searchResult');
+            let results = donors.filter(d => d.bloodGroup === bloodGroup && d.state === state);
+            resultDiv.innerHTML = results.length ? results.map(d => `<p>${d.name} - ${d.phone}</p>`).join('') : 'No donors found';
+        }
+    </script>
+    <a href="admin.html">Admin Panel</a>
+</body>
+</html>

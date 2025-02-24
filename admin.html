@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Blood Donation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid gray;
+            font-size: 16px;
+        }
+        button {
+            background: #dc3545;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background: #a71d2a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .logout-btn {
+            margin-top: 20px;
+            background: #007bff;
+        }
+        .logout-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-section">
+        <h2>Admin Login</h2>
+        <input type="text" id="admin-username" placeholder="Enter Admin Username">
+        <input type="password" id="admin-password" placeholder="Enter Admin Password">
+        <button onclick="adminLogin()">Login</button>
+    </div>
+    
+    <div class="container" id="admin-panel" style="display:none;">
+        <h2>Donor List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>State</th>
+                    <th>Blood Group</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="donor-list"></tbody>
+        </table>
+        <button class="logout-btn" onclick="adminLogout()">Logout</button>
+    </div>
+
+    <script>
+        const ADMIN_CREDENTIALS = { username: "dul_xkifl", password: "dulkifl_567567" };
+        
+        function adminLogin() {
+            let username = document.getElementById('admin-username').value;
+            let password = document.getElementById('admin-password').value;
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                loadDonors();
+            } else {
+                alert('Incorrect username or password!');
+            }
+        }
+        
+        function adminLogout() {
+            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('login-section').style.display = 'block';
+        }
+        
+        function loadDonors() {
+            let donors = JSON.parse(localStorage.getItem('donors')) || [];
+            let donorList = document.getElementById('donor-list');
+            donorList.innerHTML = "";
+            donors.forEach((donor, index) => {
+                donorList.innerHTML += `
+                    <tr>
+                        <td>${donor.name}</td>
+                        <td>${donor.phone}</td>
+                        <td>${donor.state}</td>
+                        <td>${donor.bloodGroup}</td>
+                        <td>
+                            <button onclick="updateDonor(${index})">Update</button>
+                            <button onclick="deleteDonor(${index})">Delete</button>
+                        </td>
+                    </tr>`;
+            });
+        }
+        
+        function updateDonor(index) {
+            let donors = JSON.parse(localStorage.getItem('donors')) || [];
+            let newName = prompt("Enter new name:", donors[index].name);
+            let newPhone = prompt("Enter new phone:", donors[index].phone);
+            let newState = prompt("Enter new state:", donors[index].state);
+            let newBloodGroup = prompt("Enter new blood group:", donors[index].bloodGroup);
+            
+            if (newName && newPhone && newState && newBloodGroup) {
+                donors[index].name = newName;
+                donors[index].phone = newPhone;
+                donors[index].state = newState;
+                donors[index].bloodGroup = newBloodGroup;
+                localStorage.setItem('donors', JSON.stringify(donors));
+                alert('Donor details updated successfully!');
+                loadDonors();
+            } else {
+                alert('Update cancelled or invalid input!');
+            }
+        }
+        
+        function deleteDonor(index) {
+            let donors = JSON.parse(localStorage.getItem('donors')) || [];
+            donors.splice(index, 1);
+            localStorage.setItem('donors', JSON.stringify(donors));
+            loadDonors();
+        }
+    </script>
+</body>
+</html>
